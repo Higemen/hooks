@@ -19,7 +19,7 @@
 # This sample shows how to prevent push of commits where the log message starts
 # with "WIP" (work in progress).
 
-remote_ref = `git branch`
+remote_ref = `git branch --contains=HEAD`
 if /master/ =~ remote_ref
   puts "You can't push your branch to master!"
   exit 1
