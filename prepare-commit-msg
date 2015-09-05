@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+current_branch = `git branch --contains=HEAD`
+issue = current_branch.match(/\d+/)[0]
+open(ARGV[0], 'w') do |file|
+  file.print "##{issue}:"
+end
