@@ -20,7 +20,7 @@
 # with "WIP" (work in progress).
 
 remote_ref = `git branch --contains=HEAD`
-if /master/ =~ remote_ref
+if /master|develop/ =~ remote_ref
   puts "You can't push your branch to master!"
   exit 1
 end
