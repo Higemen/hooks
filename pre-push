@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
-remote_ref = `git branch --contains=HEAD`
+remote_refs = `git branch`.split("\n")
+current_ref = remote_refs.select{|ref| ref.match(/\*/)}.first
+remote_ref = current_ref.gsub(/\*/, "").lstrip
 if /master|develop/ =~ remote_ref
   puts "You can't push your branch to master!"
   exit 1
